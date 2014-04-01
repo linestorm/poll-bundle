@@ -1,0 +1,8 @@
+parameters:
+  linestorm.blog.module.post.poll.class:  LineStorm\PollBundle\Module\Post\Component\PollComponent
+
+services:
+
+  linestorm.blog.module.post.tag:
+    class: %linestorm.blog.module.post.poll.class%
+    arguments: [@linestorm.blog.model_manager]
