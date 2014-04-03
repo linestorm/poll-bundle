@@ -52,4 +52,8 @@ abstract class Poll
      */
     protected $multiple;
 
+    /**
+     * @var integer
+     */
+    protected $order;
 }

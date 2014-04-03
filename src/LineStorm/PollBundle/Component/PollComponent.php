@@ -1,18 +1,21 @@
 <?php
 
-namespace LineStorm\PollBundle\Module\Post\Component;
+namespace LineStorm\PollBundle\Component;
 
-use LineStorm\BlogBundle\Module\Post\Component\AbstractHeaderComponent;
-use LineStorm\BlogBundle\Module\Post\Component\ComponentInterface;
+use LineStorm\BlogPostBundle\Model\Post;
+use LineStorm\BlogPostBundle\Module\Component\AbstractBodyComponent;
+use LineStorm\BlogPostBundle\Module\Component\ComponentInterface;
+use LineStorm\PollBundle\Model\Poll;
+use Symfony\Component\Form\FormBuilderInterface;
 
-class PollComponent extends AbstractHeaderComponent implements ComponentInterface
+class PollComponent extends AbstractBodyComponent implements ComponentInterface
 {
     protected $name = 'Poll';
     protected $id = 'poll';
 
     public function isSupported($entity)
     {
-        return ($entity instanceof Tag);
+        return ($entity instanceof Poll);
     }
 
     /**
@@ -28,7 +31,7 @@ class PollComponent extends AbstractHeaderComponent implements ComponentInterfac
     {
         $tags = $this->modelManager->get('tag')->findBy(array(), array('name' => 'ASC'));
 
-        return $this->templating->render('LineStormBlogBundle:Modules:Post/Component/tag/new.html.twig', array(
+        return $this->templating->render('LineStormPollBundle:Component:new.html.twig', array(
             'tagEntities'   => null,
             'component'     => $this,
             'tags'          => $tags,
@@ -43,7 +46,7 @@ class PollComponent extends AbstractHeaderComponent implements ComponentInterfac
     {
         $tags = $this->modelManager->get('tag')->findBy(array(), array('name' => 'ASC'));
 
-        return $this->templating->render('LineStormBlogBundle:Modules:Post/Component/tag/new.html.twig', array(
+        return $this->templating->render('LineStormPollBundle:Component:new.html.twig', array(
             'tagEntities'   => $entity,
             'component'     => $this,
             'tags'          => $tags,
@@ -53,7 +56,7 @@ class PollComponent extends AbstractHeaderComponent implements ComponentInterfac
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('tags', 'tag', array(
+            ->add('polls', 'poll', array(
                 'em' => $this->modelManager->getManager(),
                 'tag_class' => $this->modelManager->getEntityClass('tag'),
                 'name'  => 'name',
@@ -67,12 +70,12 @@ class PollComponent extends AbstractHeaderComponent implements ComponentInterfac
         $entities = array();
 
         foreach ($data as $eData) {
-            $tag = $this->getEntityByName($eData);
-            if (!($tag instanceof Tag)) {
-                $tag = $this->createEntity($eData);
+            $poll = $this->getEntityByName($eData);
+            if (!($poll instanceof Poll)) {
+                $poll = $this->createEntity($eData);
             }
-            $post->addTag($tag);
-            $entities[] = $tag;
+            $post->addPoll($poll);
+            $entities[] = $poll;
         }
 
         return $entities;
@@ -80,14 +83,14 @@ class PollComponent extends AbstractHeaderComponent implements ComponentInterfac
 
     public function getEntityByName(array $data)
     {
-        return $this->modelManager->get('tag')->findOneBy(array(
+        return $this->modelManager->get('poll')->findOneBy(array(
             'name' => $data['name']
         ));
     }
 
     public function createEntity(array $data)
     {
-        $class  = $this->modelManager->getEntityClass('tag');
+        $class  = $this->modelManager->getEntityClass('poll');
         $entity = new $class();
 
         $entity->setName($data['name']);
