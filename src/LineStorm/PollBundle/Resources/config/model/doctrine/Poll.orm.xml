@@ -6,15 +6,13 @@
     <field name="body" type="text" column="body" precision="0" scale="0" nullable="false"/>
 
     <field name="createdOn" type="datetime" column="created_on" precision="0" scale="0" nullable="false"/>
-    <field name="editedOn" type="datetime" column="edited_on" precision="0" scale="0" nullable="true"/>
 
     <field name="startDate" type="datetime" column="start_date" precision="0" scale="0" nullable="true"/>
     <field name="endDate" type="datetime" column="end_date" precision="0" scale="0" nullable="true"/>
 
-    <field name="multiple" type="boolean" column="multiple" precision="0" scale="0" nullable="false"/>
+    <field name="allowAnonymous" type="boolean" column="allow_anonymous" precision="0" scale="0" nullable="false"/>
 
     <field name="order" type="integer" column="post_order" precision="0" scale="0" nullable="false"/>
-
 
   </mapped-superclass>
 </doctrine-mapping>

@@ -1,0 +1,17 @@
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.post-components').off('click', '.add-poll-option').on('click', '.add-poll-option', function(e){
+            e.preventDefault();
+            e.stopPropagation();
+            var $form = $(this).closest('.poll-option-form');
+            var $ctr = $form.find('.poll-option-container');
+            var indexer = {count: parseInt($form.data('index'))};
+            addForm($ctr, $(this).data('prototype'), indexer, '__option_name__');
+            $form.data('index', indexer.count);
+
+            $form.find('input[name*="[order]"]').val(indexer.count);
+            return false;
+        });
+    });
+</script>

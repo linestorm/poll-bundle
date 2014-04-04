@@ -18,6 +18,11 @@ abstract class PollAnswer
     protected $user;
 
     /**
+     * @var string
+     */
+    protected $ip;
+
+    /**
      * @var PollOption
      */
     protected $option;

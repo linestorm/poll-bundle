@@ -15,12 +15,39 @@ class PollFormType extends AbstractBlogFormType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('name')
             ->add('body', 'textarea', array(
                 'attr' => array(
                     'class' => 'form-control ckeditor-textarea',
                     'style' => 'height:200px;',
                 ),
                 'label' => false,
+            ))
+            ->add('options', 'collection', array(
+                'type'      => 'linestorm_blog_form_post_poll_option',
+                'allow_add' => true,
+                'allow_delete' => true,
+                'by_reference' => false,
+                'label' => false,
+                'prototype_name' => '__option_name__',
+            ))
+
+            ->add('startDate', 'datetime', array(
+                'date_widget' => 'single_text',
+                'time_widget' => 'single_text',
+                'data'        => new \DateTime(),
+                'required' => false,
+            ))
+            ->add('endDate', 'datetime', array(
+                //'help'        => 'Leave blank to not set an end date',
+                'date_widget' => 'single_text',
+                'time_widget' => 'single_text',
+                'data'        => null,
+                'required' => false,
+            ))
+            ->add('allowAnonymous', 'checkbox', array(
+                //'help'        => 'If checked, the anonymous users can vote',
+                'required' => false,
             ))
             ->add('order', 'hidden')
         ;

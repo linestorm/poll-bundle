@@ -5,6 +5,5 @@ services:
 
   linestorm.blog.module.post.component.poll:
     class: %linestorm.blog.module.post.poll.class%
-    arguments: [@linestorm.blog.model_manager]
     tags:
       - { name: linestorm.blog.module.post.component }
