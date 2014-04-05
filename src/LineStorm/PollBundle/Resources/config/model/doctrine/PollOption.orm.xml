@@ -4,8 +4,6 @@
 
     <field name="answer" type="string" column="answer" length="255" precision="0" scale="0" nullable="false"/>
 
-    <field name="isCorrect" type="boolean" column="is_correct" precision="0" scale="0" nullable="false"/>
-
     <field name="order" type="integer" column="post_order" precision="0" scale="0" nullable="false"/>
 
   </mapped-superclass>

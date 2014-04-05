@@ -18,10 +18,6 @@ class PollOptionFormType extends AbstractBlogFormType
             ->add('answer', 'text', array(
                 'label' => false,
             ))
-            ->add('isCorrect', 'checkbox', array(
-                'label' => false,
-                'required' => false,
-            ))
             ->add('order', 'hidden')
         ;
     }

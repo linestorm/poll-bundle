@@ -2,23 +2,33 @@
 
 namespace LineStorm\PollBundle\Component;
 
-use LineStorm\BlogPostBundle\Model\Post;
 use LineStorm\BlogPostBundle\Module\Component\AbstractBodyComponent;
 use LineStorm\BlogPostBundle\Module\Component\ComponentInterface;
 use LineStorm\PollBundle\Model\Poll;
+use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormView;
 
+/**
+ * Class PollComponent
+ * @package LineStorm\PollBundle\Component
+ */
 class PollComponent extends AbstractBodyComponent implements ComponentInterface
 {
     protected $name = 'Poll';
     protected $id = 'polls';
 
+    /**
+     * @inheritdoc
+     */
     public function isSupported($entity)
     {
         return ($entity instanceof Poll);
     }
 
+    /**
+     * @inheritdoc
+     */
     public function getForm(FormView $view)
     {
         return $this->container->get('templating')->render('LineStormPollBundle:Component:form.html.twig', array(
@@ -27,46 +37,26 @@ class PollComponent extends AbstractBodyComponent implements ComponentInterface
         ));
     }
 
+    /**
+     * @inheritdoc
+     */
     public function getFormAssetTemplate()
     {
         return 'LineStormPollBundle:Component:form-assets.html.twig';
     }
 
+
     /**
-     * @param $entity Tag
-     * @return string
+     * @inheritdoc
      */
     public function getViewTemplate($entity)
     {
-        return '';
-    }
-
-    public function getNewTemplate()
-    {
-        $tags = $this->modelManager->get('tag')->findBy(array(), array('name' => 'ASC'));
-
-        return $this->templating->render('LineStormPollBundle:Component:new.html.twig', array(
-            'tagEntities'   => null,
-            'component'     => $this,
-            'tags'          => $tags,
-        ));
+        return 'LineStormPollBundle:Component:view.html.twig';
     }
 
     /**
-     * @param $entity Tag
-     * @return string
+     * @inheritdoc
      */
-    public function getEditTemplate($entity)
-    {
-        $tags = $this->modelManager->get('tag')->findBy(array(), array('name' => 'ASC'));
-
-        return $this->templating->render('LineStormPollBundle:Component:new.html.twig', array(
-            'tagEntities'   => $entity,
-            'component'     => $this,
-            'tags'          => $tags,
-        ));
-    }
-
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -80,40 +70,9 @@ class PollComponent extends AbstractBodyComponent implements ComponentInterface
         ;
     }
 
-
-    public function handleSave(Post $post, array $data)
-    {
-        $entities = array();
-
-        foreach ($data as $eData) {
-            $poll = $this->getEntityByName($eData);
-            if (!($poll instanceof Poll)) {
-                $poll = $this->createEntity($eData);
-            }
-            $post->addPoll($poll);
-            $entities[] = $poll;
-        }
-
-        return $entities;
-    }
-
-    public function getEntityByName(array $data)
-    {
-        return $this->modelManager->get('poll')->findOneBy(array(
-            'name' => $data['name']
-        ));
-    }
-
-    public function createEntity(array $data)
-    {
-        $class  = $this->modelManager->getEntityClass('poll');
-        $entity = new $class();
-
-        $entity->setName($data['name']);
-
-        return $entity;
-    }
-
+    /**
+     * @inheritdoc
+     */
     public function getRoutes(LoaderInterface $loader)
     {
         return null;

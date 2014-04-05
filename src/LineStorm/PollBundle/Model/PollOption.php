@@ -22,11 +22,6 @@ abstract class PollOption
     protected $poll;
 
     /**
-     * @var boolean
-     */
-    protected $isCorrect;
-
-    /**
      * @var integer
      */
     protected $order;
@@ -80,22 +75,6 @@ abstract class PollOption
     public function getAnswer()
     {
         return $this->answer;
-    }
-
-    /**
-     * @param boolean $isCorrect
-     */
-    public function setIsCorrect($isCorrect)
-    {
-        $this->isCorrect = $isCorrect;
-    }
-
-    /**
-     * @return boolean
-     */
-    public function getIsCorrect()
-    {
-        return $this->isCorrect;
     }
 
     /**
