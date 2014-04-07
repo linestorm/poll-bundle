@@ -1,0 +1,52 @@
+<style>
+    .poll-container {
+        padding: 0 20px;
+        border: 1px solid #cccccc;
+    }
+
+</style>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('form.poll-form').on('submit', function(e){
+            e.preventDefault();
+            e.stopPropagation();
+
+            var $form = $(this);
+
+            window.lineStorm.api.saveForm($form, function(f){
+
+                window.lineStorm.api.call(f.results, {
+                    success: function(o){
+                        if(typeof o.options !== 'undefined'){
+                            $form.fadeOut(function(){
+                                var $results = $form.closest('.poll-container').find('.results-container').empty();
+                                var prototype = $results.data('prototype');
+                                for(var i in o.options){
+                                    var option = o.options[i];
+                                    var oPrototype = prototype.replace(/__count__/gim, option.count).replace(/__answer__/gim, option.answer).replace(/__percent__/gim, ((option.count / o.total) * 100));
+                                    $results.append(oPrototype);
+                                }
+                                $form.remove();
+                            });
+                        }
+                    },
+                    error: function(){
+                        alert("Unable to fetch results");
+                    }
+                });
+                alert('Thanks for voting!');
+            }, function(xhr, e, s){
+                var response = xhr.responseJSON;
+                alert(response.error);
+            })
+
+            return false;
+        });
+    });
+</script>
+
+{% javascripts
+    '@LineStormBlogBundle/Resources/public/js/api.js'
+    output='compiled/js/admin/blog-poll.js' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}

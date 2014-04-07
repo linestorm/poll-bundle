@@ -59,6 +59,11 @@ abstract class Poll
      */
     protected $post;
 
+    /**
+     * @var boolean
+     */
+    protected $multiple;
+
 
     /**
      * Constructor
@@ -245,6 +250,22 @@ abstract class Poll
     public function getStartDate()
     {
         return $this->startDate;
+    }
+
+    /**
+     * @param boolean $multiple
+     */
+    public function setMultiple($multiple)
+    {
+        $this->multiple = $multiple;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getMultiple()
+    {
+        return $this->multiple;
     }
 
 

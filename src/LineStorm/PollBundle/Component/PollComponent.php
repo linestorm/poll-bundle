@@ -2,12 +2,15 @@
 
 namespace LineStorm\PollBundle\Component;
 
+use FOS\UserBundle\Model\UserInterface;
 use LineStorm\BlogPostBundle\Module\Component\AbstractBodyComponent;
 use LineStorm\BlogPostBundle\Module\Component\ComponentInterface;
+use LineStorm\BlogPostBundle\Module\Component\View\ComponentView;
 use LineStorm\PollBundle\Model\Poll;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormView;
+use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 
 /**
  * Class PollComponent
@@ -45,13 +48,67 @@ class PollComponent extends AbstractBodyComponent implements ComponentInterface
         return 'LineStormPollBundle:Component:form-assets.html.twig';
     }
 
-
     /**
      * @inheritdoc
      */
     public function getViewTemplate($entity)
     {
-        return 'LineStormPollBundle:Component:view.html.twig';
+        // check if the user has answered the poll
+        $request = $this->container->get('request');
+        $token   = $this->container->get('security.context')->getToken();
+        $poll = $this->modelManager->get('poll')->findResults($entity->getId());
+
+        $allowVoting = true;
+
+        $qb = $this->modelManager->get('poll_answer')->createQueryBuilder('a')
+            ->select('a', 'o')
+            ->join('a.option', 'o')
+            ->join('o.poll', 'p')
+            ->where('p.id = ?1')
+            ->setParameter(1, $poll['id']);
+
+        if($poll['allowAnonymous'])
+        {
+            $qb->andWhere('a.ip = :ip')
+               ->setParameter(':ip', $request->getClientIp());
+            $answers = $qb->getQuery()->getArrayResult();
+        }
+        else
+        {
+            // if there is no token, dont allow voting
+            if(!($token instanceof TokenInterface) || !($token->getUser() instanceof UserInterface))
+            {
+                $allowVoting = false;
+                $answers = array();
+            }
+            else
+            {
+                $qb->andWhere('a.user = :user')
+                    ->setParameter(':user', $token->getUser());
+                $answers = $qb->getQuery()->getArrayResult();
+            }
+        }
+
+
+        if($allowVoting && count($answers))
+        {
+            $allowVoting = false;
+        }
+
+        return new ComponentView('LineStormPollBundle:Component:view.html.twig', array(
+            'user_answers'  => $answers,
+            'poll_results'  => $poll,
+            'allow_voting'  => $allowVoting,
+        ));
+    }
+
+
+    /**
+     * @inheritdoc
+     */
+    public function getViewAssetTemplate()
+    {
+        return 'LineStormPollBundle:Component:view-assets.html.twig';
     }
 
     /**
@@ -75,6 +132,7 @@ class PollComponent extends AbstractBodyComponent implements ComponentInterface
      */
     public function getRoutes(LoaderInterface $loader)
     {
+        return $loader->import('@LineStormPollBundle/Resources/config/routing/api.yml', 'rest');
         return null;
     }
 } 

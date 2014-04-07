@@ -1,0 +1,11 @@
+linestorm_blog_api_poll:
+    type:         rest
+    prefix:       /api
+    resource:     LineStorm\PollBundle\Controller\Api\PollController
+    name_prefix:  linestorm_blog_post_module_api_
+
+linestorm_blog_api_poll_option:
+    type:         rest
+    parent:       linestorm_blog_api_poll
+    resource:     LineStorm\PollBundle\Controller\Api\OptionController
+    name_prefix:  linestorm_blog_post_module_api_

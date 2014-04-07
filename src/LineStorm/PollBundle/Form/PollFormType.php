@@ -49,6 +49,10 @@ class PollFormType extends AbstractBlogFormType
                 //'help'        => 'If checked, the anonymous users can vote',
                 'required' => false,
             ))
+            ->add('multiple', 'checkbox', array(
+                //'help'        => 'If checked, the anonymous users can vote',
+                'required' => false,
+            ))
             ->add('order', 'hidden')
         ;
     }

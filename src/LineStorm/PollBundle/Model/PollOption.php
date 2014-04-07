@@ -2,6 +2,7 @@
 
 namespace LineStorm\PollBundle\Model;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 abstract class PollOption
@@ -26,6 +27,15 @@ abstract class PollOption
      */
     protected $order;
 
+    /**
+     * @var PollAnswer[]
+     */
+    protected $answers;
+
+    function __construct()
+    {
+        $this->answers = new ArrayCollection();
+    }
 
 
     /**
@@ -92,6 +102,26 @@ abstract class PollOption
     {
         return $this->order;
     }
+
+    public function addAnswer(PollAnswer $answer)
+    {
+        $this->answers[] = $answer;
+    }
+
+    public function removeAnswer(PollAnswer $answer)
+    {
+        $this->answers->removeElement($answer);
+        $answer->setOption($this);
+    }
+
+    /**
+     * @return PollAnswer[]
+     */
+    public function getAnswers()
+    {
+        return $this->answers;
+    }
+
 
 
 }

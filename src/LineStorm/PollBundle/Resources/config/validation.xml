@@ -29,4 +29,12 @@
 
   </class>
 
+  <class name="LineStorm\BlogBundle\Model\PollAnswer">
+    <property name="ip">
+      <constraint name="NotNull" />
+      <constraint name="Ip" />
+    </property>
+
+  </class>
+
 </constraint-mapping>
