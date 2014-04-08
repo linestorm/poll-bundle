@@ -37,7 +37,15 @@
                 <input type="hidden" name="_method" value="PATCH">
                 {% for option in content.options %}
                     <p>
-                        <label><input type="{% if content.multiple %}checkbox{% else %}radio{% endif %}" name="poll_{{ content.id }}_option_{{ option.id }}" value="{{ option.id }}" /> {{ option.answer }}</label>
+                        <label>
+                            {% if content.multiple %}
+                                <input type="checkbox" name="poll_{{ content.id }}_option_{{ option.id }}" value="{{ option.id }}" />
+                            {% else %}
+                                <input type="radio" name="poll_{{ content.id }}_option" value="{{ option.id }}" />
+                            {% endif %}
+                            {{ option.answer }}
+                        </label>
+
                     </p>
                 {% endfor %}
                 <p>

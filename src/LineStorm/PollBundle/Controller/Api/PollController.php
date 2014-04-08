@@ -102,16 +102,21 @@ class PollController extends AbstractApiController implements ClassResourceInter
                 }
 
                 $payload = json_decode($this->getRequest()->getContent(), true);
-                $baseKey = "poll_{$poll->getId()}_option_";
+
+                $baseKey = "poll_{$poll->getId()}_option";
                 $optionCount = 0;
 
                 foreach($poll->getOptions() as $option)
                 {
-                    $key = $baseKey.$option->getId();
+                    $key = ($poll->getMultiple()) ? $baseKey.$option->getId() : $baseKey;
+
                     if(array_key_exists($key, $payload))
                     {
                         $optionKeys = $payload[$key];
-                        if($optionKeys == $option->getId())
+
+                        $found = false;
+
+                        if(is_array($optionKeys) && in_array($option->getId(), $optionKeys) || is_numeric($optionKeys) && $optionKeys == $option->getId())
                         {
                             /** @var PollAnswer $answer */
                             $class = $modelManager->getEntityClass('poll_answer');
