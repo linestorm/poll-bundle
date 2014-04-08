@@ -1,0 +1,14 @@
+{% extends 'LineStormCmsBundle:Admin:Form/fields.html.twig' %}
+
+{% block linestorm_cms_form_post_poll_option_widget %}
+    {% spaceless %}
+        <div class="row">
+            <div class="col-xs-12">
+                <div style="margin-bottom: 10px;">
+                    {{ form_widget(form.answer) }}
+                </div>
+            </div>
+            {{ form_rest(form) }}
+        </div>
+    {% endspaceless %}
+{% endblock %}

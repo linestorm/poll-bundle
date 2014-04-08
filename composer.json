@@ -1,10 +1,10 @@
 {
     "name": "linestorm/poll-bundle",
-    "description": "Poll component for LineStorm BlogBundle for symfony 2.3",
+    "description": "Poll component for LineStorm PostBundle for symfony 2.3",
     "require": {
         "php": ">=5.3.0",
         "symfony/symfony": ">=2.3",
-        "linestorm/blog-post-bundle" : "dev-master"
+        "linestorm/post-bundle" : "dev-master"
     },
     "authors": [
         {

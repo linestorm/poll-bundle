@@ -1,4 +1,4 @@
-Poll Component for LineStorm Blog Bundle
-========================================
+Poll Component for LineStorm Post
+=================================
 
-Poll Component for the LineStorm BlogBundle for symfony >=2.3
+Poll Component for the LineStorm Post for symfony >=2.3

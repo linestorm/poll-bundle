@@ -1,0 +1,20 @@
+#
+# DEFAULT FORM TYPES
+#
+parameters: #
+  linestorm.cms.module.post.form.component.poll.class: LineStorm\PollBundle\Form\PollFormType
+  linestorm.cms.module.post.form.component.poll_option.class: LineStorm\PollBundle\Form\PollOptionFormType
+
+services:
+
+  linestorm.cms.module.post.form.component.poll:
+        class: %linestorm.cms.module.post.form.component.poll.class%
+        arguments: [@linestorm.cms.model_manager]
+        tags:
+            - { name: form.type, alias: linestorm_cms_form_post_poll }
+
+  linestorm.cms.module.post.form.component.poll_option:
+        class: %linestorm.cms.module.post.form.component.poll_option.class%
+        arguments: [@linestorm.cms.model_manager]
+        tags:
+            - { name: form.type, alias: linestorm_cms_form_post_poll_option }
