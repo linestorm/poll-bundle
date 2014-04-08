@@ -2,19 +2,19 @@
 # DEFAULT FORM TYPES
 #
 parameters: #
-  linestorm.blog.module.post.form.component.poll.class: LineStorm\PollBundle\Form\PollFormType
-  linestorm.blog.module.post.form.component.poll_option.class: LineStorm\PollBundle\Form\PollOptionFormType
+  linestorm.cms.module.post.form.component.poll.class: LineStorm\PollBundle\Form\PollFormType
+  linestorm.cms.module.post.form.component.poll_option.class: LineStorm\PollBundle\Form\PollOptionFormType
 
 services:
 
-  linestorm.blog.module.post.form.component.poll:
-        class: %linestorm.blog.module.post.form.component.poll.class%
-        arguments: [@linestorm.blog.model_manager]
+  linestorm.cms.module.post.form.component.poll:
+        class: %linestorm.cms.module.post.form.component.poll.class%
+        arguments: [@linestorm.cms.model_manager]
         tags:
-            - { name: form.type, alias: linestorm_blog_form_post_poll }
+            - { name: form.type, alias: linestorm_cms_form_post_poll }
 
-  linestorm.blog.module.post.form.component.poll_option:
-        class: %linestorm.blog.module.post.form.component.poll_option.class%
-        arguments: [@linestorm.blog.model_manager]
+  linestorm.cms.module.post.form.component.poll_option:
+        class: %linestorm.cms.module.post.form.component.poll_option.class%
+        arguments: [@linestorm.cms.model_manager]
         tags:
-            - { name: form.type, alias: linestorm_blog_form_post_poll_option }
+            - { name: form.type, alias: linestorm_cms_form_post_poll_option }

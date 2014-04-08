@@ -6,18 +6,10 @@
 
   <services>
 
-    <service id="linestorm.blog.module.post.component.poll.model.poll.listener" class="LineStorm\PollBundle\Doctrine\Orm\PollListener" public="false">
+    <service id="linestorm.cms.module.post.component.poll.model.poll.listener" class="LineStorm\PollBundle\Doctrine\Orm\PollListener" public="false">
       <argument type="service" id="service_container" />
       <tag name="doctrine.event_subscriber" />
     </service>
-
-    <!--<service id="linestorm.blog.module.post.component.poll.model.poll_option.listener" class="LineStorm\PollBundle\Doctrine\Orm\PollOptionListener" public="false">-->
-      <!--<argument type="service" id="service_container" />-->
-    <!--</service>-->
-
-    <!--<service id="linestorm.blog.module.post.component.poll.model.poll_answer.listener" class="LineStorm\PollBundle\Doctrine\Orm\PollAnswerListener" public="false">-->
-      <!--<argument type="service" id="service_container" />-->
-    <!--</service>-->
 
   </services>
 

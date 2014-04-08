@@ -4,8 +4,7 @@ namespace LineStorm\PollBundle\Controller\Api;
 
 use Doctrine\ORM\Query;
 use FOS\RestBundle\Routing\ClassResourceInterface;
-use LineStorm\BlogBundle\Controller\Api\AbstractApiController;
-use Symfony\Component\Intl\Exception\MethodNotImplementedException;
+use LineStorm\CmsBundle\Controller\Api\AbstractApiController;
 
 class OptionController extends AbstractApiController implements ClassResourceInterface
 {
@@ -13,7 +12,7 @@ class OptionController extends AbstractApiController implements ClassResourceInt
     /**
      * Get a list of all consumables
      *
-     * [GET] /api/blog/polls.{_format}
+     * [GET] /api/cms/polls.{_format}
      */
     public function cgetAction($id)
     {
@@ -46,7 +45,7 @@ class OptionController extends AbstractApiController implements ClassResourceInt
     /**
      * Get a post
      *
-     * [GET] /api/blog/poll/{id}.{_format}
+     * [GET] /api/cms/poll/{id}.{_format}
      */
     public function getAction($poll, $id)
     {

@@ -3,9 +3,9 @@
 namespace LineStorm\PollBundle\Component;
 
 use FOS\UserBundle\Model\UserInterface;
-use LineStorm\BlogPostBundle\Module\Component\AbstractBodyComponent;
-use LineStorm\BlogPostBundle\Module\Component\ComponentInterface;
-use LineStorm\BlogPostBundle\Module\Component\View\ComponentView;
+use LineStorm\PostBundle\Module\Component\AbstractBodyComponent;
+use LineStorm\PostBundle\Module\Component\ComponentInterface;
+use LineStorm\PostBundle\Module\Component\View\ComponentView;
 use LineStorm\PollBundle\Model\Poll;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -118,7 +118,7 @@ class PollComponent extends AbstractBodyComponent implements ComponentInterface
     {
         $builder
             ->add('polls', 'collection', array(
-                'type'      => 'linestorm_blog_form_post_poll',
+                'type'      => 'linestorm_cms_form_post_poll',
                 'allow_add' => true,
                 'allow_delete' => true,
                 'by_reference' => false,

@@ -2,11 +2,11 @@
 
 namespace LineStorm\PollBundle\Form;
 
-use LineStorm\BlogBundle\Form\AbstractBlogFormType;
+use LineStorm\CmsBundle\Form\AbstractCmsFormType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class PollOptionFormType extends AbstractBlogFormType
+class PollOptionFormType extends AbstractCmsFormType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -37,6 +37,6 @@ class PollOptionFormType extends AbstractBlogFormType
      */
     public function getName()
     {
-        return 'linestorm_blog_form_post_poll_option';
+        return 'linestorm_cms_form_post_poll_option';
     }
 }

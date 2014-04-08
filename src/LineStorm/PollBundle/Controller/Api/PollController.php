@@ -2,10 +2,9 @@
 
 namespace LineStorm\PollBundle\Controller\Api;
 
-use Doctrine\ORM\NoResultException;
 use Doctrine\ORM\Query;
 use FOS\RestBundle\Routing\ClassResourceInterface;
-use LineStorm\BlogBundle\Controller\Api\AbstractApiController;
+use LineStorm\CmsBundle\Controller\Api\AbstractApiController;
 use LineStorm\PollBundle\Model\Poll;
 use LineStorm\PollBundle\Model\PollAnswer;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
@@ -18,7 +17,7 @@ class PollController extends AbstractApiController implements ClassResourceInter
     /**
      * Get a list of all consumables
      *
-     * [GET] /api/blog/polls.{_format}
+     * [GET] /api/cms/polls.{_format}
      */
     public function cgetAction()
     {
@@ -140,7 +139,7 @@ class PollController extends AbstractApiController implements ClassResourceInter
                 $em->flush();
 
                 $view = $this->createResponse(array(
-                    'results' => $this->generateUrl('linestorm_blog_post_module_api_get_poll_results', array('id' => $poll->getId()))
+                    'results' => $this->generateUrl('linestorm_cms_module_post_api_get_poll_results', array('id' => $poll->getId()))
                 ));
             }
             else
@@ -161,7 +160,7 @@ class PollController extends AbstractApiController implements ClassResourceInter
     /**
      * Get a post
      *
-     * [GET] /api/blog/poll/{id}.{_format}
+     * [GET] /api/cms/poll/{id}.{_format}
      */
     public function getAction($id)
     {

@@ -3,7 +3,7 @@
                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                     xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping http://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
 
-  <class name="LineStorm\BlogBundle\Model\Poll">
+  <class name="LineStorm\CmsBundle\Model\Poll">
     <property name="name">
       <constraint name="NotNull" />
       <constraint name="Length">
@@ -16,7 +16,7 @@
 
   </class>
 
-  <class name="LineStorm\BlogBundle\Model\PollOption">
+  <class name="LineStorm\CmsBundle\Model\PollOption">
     <property name="answer">
       <constraint name="NotNull" />
       <constraint name="Length">
@@ -29,7 +29,7 @@
 
   </class>
 
-  <class name="LineStorm\BlogBundle\Model\PollAnswer">
+  <class name="LineStorm\CmsBundle\Model\PollAnswer">
     <property name="ip">
       <constraint name="NotNull" />
       <constraint name="Ip" />

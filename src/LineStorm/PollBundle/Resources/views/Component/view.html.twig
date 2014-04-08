@@ -33,7 +33,7 @@
             </div>
 
             {% if allow_voting %}
-            <form id="poll_{{ content.id }}" name="poll_form_{{ content.id }}" class="poll-form" action="{{ path('linestorm_blog_post_module_api_vote_poll', {id: content.id}) }}" method="post">
+            <form id="poll_{{ content.id }}" name="poll_form_{{ content.id }}" class="poll-form" action="{{ path('linestorm_cms_module_post_api_vote_poll', {id: content.id}) }}" method="post">
                 <input type="hidden" name="_method" value="PATCH">
                 {% for option in content.options %}
                     <p>

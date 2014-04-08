@@ -5,7 +5,7 @@ namespace LineStorm\PollBundle\Model;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use LineStorm\BlogPostBundle\Model\Post;
+use LineStorm\PostBundle\Model\Post;
 
 abstract class Poll
 {
