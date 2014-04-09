@@ -2,10 +2,15 @@
 
 {% block linestorm_cms_form_post_poll_option_widget %}
     {% spaceless %}
-        <div class="row">
+        <div class="row poll-option-wrapper" style="margin-bottom: 10px;">
             <div class="col-xs-12">
-                <div style="margin-bottom: 10px;">
+                <div class="pull-left" style="width: calc(100% - 40px);">
                     {{ form_widget(form.answer) }}
+                </div>
+                <div class="pull-right" style="width: 35px;">
+                    <button type="button" class="btn btn-danger post-option-remove">
+                        <i class="fa-times"></i>
+                    </button>
                 </div>
             </div>
             {{ form_rest(form) }}

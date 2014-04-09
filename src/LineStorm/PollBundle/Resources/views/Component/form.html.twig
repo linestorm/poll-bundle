@@ -17,7 +17,7 @@
 
         <hr />
 
-        <div class="poll-option-form" data-index="{% if form.options.vars.value %}0{% else %}3{% endif %}">
+        <div class="poll-option-form" data-index="{% if form.options.vars.value %}{{ form.options|length }}{% else %}3{% endif %}">
             {% set option_form = form_widget(form.options.vars.prototype) %}
             <a href="#" data-prototype="{{ option_form|e('html_attr') }}" class="add-poll-option">Add Option</a>
             <div class="poll-option-container" data-prototype="<div>__widget__</div>">

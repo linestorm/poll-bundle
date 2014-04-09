@@ -7,6 +7,7 @@ use LineStorm\PostBundle\Module\Component\AbstractBodyComponent;
 use LineStorm\PostBundle\Module\Component\ComponentInterface;
 use LineStorm\PostBundle\Module\Component\View\ComponentView;
 use LineStorm\PollBundle\Model\Poll;
+use Symfony\Component\Config\Loader\Loader;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormView;
@@ -130,9 +131,8 @@ class PollComponent extends AbstractBodyComponent implements ComponentInterface
     /**
      * @inheritdoc
      */
-    public function getRoutes(LoaderInterface $loader)
+    public function getRoutes(Loader $loader)
     {
         return $loader->import('@LineStormPollBundle/Resources/config/routing/api.yml', 'rest');
-        return null;
     }
 } 
