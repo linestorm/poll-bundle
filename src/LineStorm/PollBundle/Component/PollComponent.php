@@ -44,14 +44,6 @@ class PollComponent extends AbstractBodyComponent implements ComponentInterface
     /**
      * @inheritdoc
      */
-    public function getFormAssetTemplate()
-    {
-        return 'LineStormPollBundle:Component:form-assets.html.twig';
-    }
-
-    /**
-     * @inheritdoc
-     */
     public function getViewTemplate($entity)
     {
         // check if the user has answered the poll
