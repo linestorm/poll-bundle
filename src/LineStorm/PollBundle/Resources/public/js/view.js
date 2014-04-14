@@ -1,4 +1,4 @@
-define(['jquery', 'bootstrap', '../../../bundles/linestormcms/js/api'], function ($, bs, api) {
+define(['jquery', 'bootstrap', '/assets/bundles/linestormcms/js/api'], function ($, bs, api) {
     $(document).ready(function(){
         $('form.poll-form').on('submit', function(e){
             e.preventDefault();

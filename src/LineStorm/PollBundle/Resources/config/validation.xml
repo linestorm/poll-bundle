@@ -15,6 +15,14 @@
       </constraint>
     </property>
 
+    <property name="body">
+      <constraint name="NotNull" />
+      <constraint name="Length">
+        <option name="min">20</option>
+        <option name="minMessage">Body must be at least {{ limit }} characters in length</option>
+      </constraint>
+    </property>
+
   </class>
 
   <class name="LineStorm\CmsBundle\Model\PollOption">
