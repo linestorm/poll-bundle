@@ -36,14 +36,14 @@ class PollComponent extends AbstractBodyComponent implements ComponentInterface
     public function getAssets()
     {
         return array(
-            '@LineStormPollBundle/Resources/public/js/poll.js'
+            '@LineStormPollBundle/Resources/public/js/post_poll.js'
         );
     }
 
     public function getViewAssets()
     {
         return array(
-            '@LineStormPollBundle/Resources/public/js/view.js'
+            '@LineStormPollBundle/Resources/public/js/post_poll_view.js'
         );
     }
 
