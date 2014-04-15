@@ -33,6 +33,23 @@ class PollComponent extends AbstractBodyComponent implements ComponentInterface
     /**
      * @inheritdoc
      */
+    public function getAssets()
+    {
+        return array(
+            '@LineStormPollBundle/Resources/public/js/post_poll.js'
+        );
+    }
+
+    public function getViewAssets()
+    {
+        return array(
+            '@LineStormPollBundle/Resources/public/js/post_poll_view.js'
+        );
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function getForm(FormView $view)
     {
         return $this->container->get('templating')->render('LineStormPollBundle:Component:form.html.twig', array(
@@ -44,15 +61,7 @@ class PollComponent extends AbstractBodyComponent implements ComponentInterface
     /**
      * @inheritdoc
      */
-    public function getFormAssetTemplate()
-    {
-        return 'LineStormPollBundle:Component:form-assets.html.twig';
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function getViewTemplate($entity)
+    public function getView($entity)
     {
         // check if the user has answered the poll
         $request = $this->container->get('request');
@@ -103,14 +112,6 @@ class PollComponent extends AbstractBodyComponent implements ComponentInterface
         ));
     }
 
-
-    /**
-     * @inheritdoc
-     */
-    public function getViewAssetTemplate()
-    {
-        return 'LineStormPollBundle:Component:view-assets.html.twig';
-    }
 
     /**
      * @inheritdoc

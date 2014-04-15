@@ -4,7 +4,7 @@
     {% spaceless %}
         {{ form_row(form.order) }}
         {{ form_row(form.name) }}
-        {{ form_row(form.body) }}
+        {{ form_row(form.body, {attr: {class: 'form-control ckeditor-textarea'}}) }}
 
         <hr />
 

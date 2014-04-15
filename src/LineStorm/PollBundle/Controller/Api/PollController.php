@@ -91,10 +91,24 @@ class PollController extends AbstractApiController implements ClassResourceInter
                 $user = $this->getUser();
 
                 // validate that this user has not already voted!
-                $previousAnswers = $modelManager->get('poll_answer')->findBy(array(
-                    'user'  => $user,
-                    'ip'    => $ip,
+                $aClass = $modelManager->getEntityClass('poll_answer');
+                $dql = "
+                  SELECT
+                    a
+                  FROM
+                    {$aClass} a
+                    JOIN a.option o
+                  WHERE
+                    a.user = :user
+                    AND a.ip = :ip
+                    AND o.poll = :poll
+                ";
+                $answerQuery = $em->createQuery($dql)->setParameters(array(
+                    'user' => $user,
+                    'ip'   => $ip,
+                    'poll' => $poll,
                 ));
+                $previousAnswers = $answerQuery->getResult();
 
                 if($previousAnswers)
                 {
@@ -108,13 +122,11 @@ class PollController extends AbstractApiController implements ClassResourceInter
 
                 foreach($poll->getOptions() as $option)
                 {
-                    $key = ($poll->getMultiple()) ? $baseKey.$option->getId() : $baseKey;
+                    $key = ($poll->getMultiple()) ? $baseKey.'_'.$option->getId() : $baseKey;
 
                     if(array_key_exists($key, $payload))
                     {
                         $optionKeys = $payload[$key];
-
-                        $found = false;
 
                         if(is_array($optionKeys) && in_array($option->getId(), $optionKeys) || is_numeric($optionKeys) && $optionKeys == $option->getId())
                         {

@@ -1,11 +1,4 @@
-<style>
-    .poll-container {
-        padding: 0 20px;
-        border: 1px solid #cccccc;
-    }
-
-</style>
-<script type="text/javascript">
+define(['jquery', 'bootstrap', 'cms_api'], function ($, bs, api) {
     $(document).ready(function(){
         $('form.poll-form').on('submit', function(e){
             e.preventDefault();
@@ -42,10 +35,4 @@
             return false;
         });
     });
-</script>
-
-{% javascripts
-    '@LineStormCmsBundle/Resources/public/js/api.js'
-    output='compiled/js/admin/cms-poll.js' %}
-    <script type="text/javascript" src="{{ asset_url }}"></script>
-{% endjavascripts %}
+});
