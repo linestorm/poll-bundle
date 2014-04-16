@@ -30,7 +30,7 @@ define(['jquery', 'bootstrap', 'cms_api'], function ($, bs, api) {
             }, function(xhr, e, s){
                 var response = xhr.responseJSON;
                 alert(response.error);
-            })
+            });
 
             return false;
         });

@@ -20,7 +20,7 @@ define(['jquery', 'jckeditor'], function ($, ck) {
             return false;
         });
 
-        $(this).find('input[name$="[order]"]').filter(function(){ return this.name.match(/\[polls\]\[\d+\]\[order\]$/) }).val(contentCounts.components);
+        $(this).find('input[name$="[order]"]').filter(function(){ return this.name.match(/\[polls\]\[\d+\]\[order\]$/); }).val(contentCounts.components);
         $(this).find('textarea.ckeditor-textarea').ckeditor().focus();
     });
 
