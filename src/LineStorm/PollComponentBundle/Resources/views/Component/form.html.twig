@@ -1,0 +1,36 @@
+{% form_theme form 'LineStormPollComponentBundle:Form:fields.html.twig' %}
+
+{% if form.parent %}
+    {% spaceless %}
+        {{ form_row(form.order) }}
+        {{ form_row(form.name) }}
+        {{ form_row(form.body, {attr: {class: 'form-control ckeditor-textarea'}}) }}
+
+        <hr />
+
+        <a href="#" class="options-toggle" data-toggle="poll-options">Poll Options <i class="pull-right fa-angle-down"></i></a>
+        <div class="poll-options" style="display: none">
+            {{ form_row(form.startDate) }}
+            {{ form_row(form.endDate,           {help: 'Leave blank to set no end date'}) }}
+            {{ form_row(form.allowAnonymous,    {help: 'Tick to allow unregistered users to vote'}) }}
+        </div>
+
+        <hr />
+
+        <div class="poll-option-form" data-index="{% if form.options.vars.value %}{{ form.options|length }}{% else %}3{% endif %}">
+            {% set option_form = form_widget(form.options.vars.prototype) %}
+            <a href="#" data-prototype="{{ option_form|e('html_attr') }}" class="add-poll-option">Add Option</a>
+            <div class="poll-option-container" data-prototype="<div>__widget__</div>">
+                {% if form.options.vars.value %}
+                    {% for option in form.options %}
+                        {{ form_widget(option) }}
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+
+        {{ form_rest(form) }}
+    {% endspaceless %}
+{% else %}
+    {{ form(form) }}
+{% endif %}

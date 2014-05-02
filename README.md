@@ -19,7 +19,7 @@ Step 1: Download bundle using composer
 Add `linestorm/poll-bundle` to your `composer.json` file, or download it by running the command:
 
 ```bash
-$ php composer.phar require linestorm/poll-bundle
+$ php composer.phar require linestorm/poll-component-bundle
 ```
 
 Step 2: Enable the bundle
@@ -32,7 +32,7 @@ public function registerBundles()
 {
     $bundles = array(
         // ...
-        new LineStorm\PollBundle\PollBundle(),
+        new LineStorm\PollComponentBundle\LineStormPollComponentBundle(),
     );
 }
 ```
@@ -76,8 +76,8 @@ requirejs.config({
         // ...
 
         // cms poll library
-        cms_post_poll:      '/path/to/bundles/linestormpoll/js/post_poll',
-        cms_post_poll_view: '/path/to/bundles/linestormpoll/js/post_poll_view',
+        cms_poll:           '/path/to/bundles/linestormpollcomponent/js/poll',
+        cms_poll_view:      '/path/to/bundles/linestormpollcomponent/js/poll_view',
     }
 });
 ```

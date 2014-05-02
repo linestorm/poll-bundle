@@ -1,6 +1,6 @@
 {
-    "name": "linestorm/poll-bundle",
-    "description": "Poll component for LineStorm PostBundle for symfony 2.3",
+    "name": "linestorm/poll-component-bundle",
+    "description": "Poll component for LineStormCMS for symfony 2.3",
     "require": {
         "php": ">=5.3.0",
         "symfony/symfony": ">=2.3",
@@ -10,12 +10,11 @@
         {
             "name": "Andy Thorne",
             "email": "contrabandvr@gmail.com",
-            "homepage": "http://www.andy-thorne.co.uk",
-            "role": "Senior Developer"
+            "homepage": "http://www.andy-thorne.co.uk"
         }
     ],
     "autoload": {
         "psr-0": {"LineStorm\\": "src/"}
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "stable"
 }
