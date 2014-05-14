@@ -19,8 +19,21 @@ use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
  */
 class PollComponent extends AbstractBodyComponent implements ComponentInterface
 {
-    protected $name = 'Poll';
-    protected $id = 'polls';
+    /**
+     * @inheritdoc
+     */
+    public function getId()
+    {
+        return 'polls';
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getName()
+    {
+        return  'Poll';
+    }
 
     /**
      * @inheritdoc
