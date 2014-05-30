@@ -145,6 +145,15 @@ class PollComponent extends AbstractBodyComponent implements ComponentInterface
     /**
      * @inheritdoc
      */
+    public function getFormFields()
+    {
+        // forms are loaded asyncronously, so just return nothing
+        return array();
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function getRoutes(Loader $loader)
     {
         return $loader->import('@LineStormPollComponentBundle/Resources/config/routing/api.yml', 'rest');
