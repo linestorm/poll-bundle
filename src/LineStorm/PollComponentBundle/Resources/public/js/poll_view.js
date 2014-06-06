@@ -6,9 +6,9 @@ define(['jquery', 'bootstrap', 'cms_api'], function ($, bs, api) {
 
             var $form = $(this);
 
-            window.lineStorm.api.saveForm($form, function(f){
+            api.saveForm($form, function(f){
 
-                window.lineStorm.api.call(f.results, {
+                api.call(f.results, {
                     success: function(o){
                         if(typeof o.options !== 'undefined'){
                             var $results = $form.closest('.poll-container').find('.results-container').empty();
