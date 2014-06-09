@@ -11,6 +11,12 @@ use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
+/**
+ * Class PollController
+ *
+ * @package LineStorm\PollComponentBundle\Controller\Api
+ * @author  Andy Thorne <contrabandvr@gmail.com>
+ */
 class PollController extends AbstractApiController implements ClassResourceInterface
 {
 

@@ -6,6 +6,12 @@ use LineStorm\CmsBundle\Form\AbstractCmsFormType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+/**
+ * Class PollOptionFormType
+ *
+ * @package LineStorm\PollComponentBundle\Form
+ * @author  Andy Thorne <contrabandvr@gmail.com>
+ */
 class PollOptionFormType extends AbstractCmsFormType
 {
     /**

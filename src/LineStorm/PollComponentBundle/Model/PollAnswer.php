@@ -5,6 +5,12 @@ namespace LineStorm\PollComponentBundle\Model;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
+/**
+ * Class PollAnswer
+ *
+ * @package LineStorm\PollComponentBundle\Model
+ * @author  Andy Thorne <contrabandvr@gmail.com>
+ */
 abstract class PollAnswer
 {
     /**

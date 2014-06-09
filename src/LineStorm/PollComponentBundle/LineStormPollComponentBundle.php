@@ -7,6 +7,12 @@ use LineStorm\PostBundle\DependencyInjection\ContainerBuilder\ComponentCompilerP
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
+/**
+ * Class LineStormPollComponentBundle
+ *
+ * @package LineStorm\PollComponentBundle
+ * @author  Andy Thorne <contrabandvr@gmail.com>
+ */
 class LineStormPollComponentBundle extends Bundle
 {
 

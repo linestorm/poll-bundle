@@ -6,6 +6,12 @@ use Doctrine\ORM\Query;
 use FOS\RestBundle\Routing\ClassResourceInterface;
 use LineStorm\CmsBundle\Controller\Api\AbstractApiController;
 
+/**
+ * Class OptionController
+ *
+ * @package LineStorm\PollComponentBundle\Controller\Api
+ * @author  Andy Thorne <contrabandvr@gmail.com>
+ */
 class OptionController extends AbstractApiController implements ClassResourceInterface
 {
 

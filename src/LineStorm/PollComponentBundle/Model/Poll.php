@@ -7,6 +7,12 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use LineStorm\Content\Model\ContentNodeInterface;
 
+/**
+ * Class Poll
+ *
+ * @package LineStorm\PollComponentBundle\Model
+ * @author  Andy Thorne <contrabandvr@gmail.com>
+ */
 abstract class Poll
 {
     /**

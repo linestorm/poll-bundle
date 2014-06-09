@@ -5,6 +5,12 @@ namespace LineStorm\PollComponentBundle\Model;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * Class PollOption
+ *
+ * @package LineStorm\PollComponentBundle\Model
+ * @author  Andy Thorne <contrabandvr@gmail.com>
+ */
 abstract class PollOption
 {
     /**

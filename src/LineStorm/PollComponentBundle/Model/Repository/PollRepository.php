@@ -5,9 +5,22 @@ namespace LineStorm\PollComponentBundle\Model\Repository;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Query;
 
+/**
+ * Class PollRepository
+ *
+ * @package LineStorm\PollComponentBundle\Model\Repository
+ * @author  Andy Thorne <contrabandvr@gmail.com>
+ */
 class PollRepository extends EntityRepository
 {
 
+    /**
+     * Get the results to the poll
+     *
+     * @param $id
+     *
+     * @return mixed
+     */
     public function findResults($id)
     {
         $hydration = Query::HYDRATE_ARRAY;

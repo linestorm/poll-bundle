@@ -30,7 +30,7 @@ define(['jquery', 'jckeditor'], function ($, ck) {
     });
 
     // add ckeditor to all the pre-loaded articles
-    $('.post-component-item.item-polls').each(function(){
+    $('.content-component-item.item-polls').each(function(){
         $(this).trigger('widget-init');
     });
 });
